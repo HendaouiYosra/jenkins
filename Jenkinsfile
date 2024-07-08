@@ -45,7 +45,7 @@ pipeline {
                     }
                     steps {
                         script{
-                          env.ENV2 = input message: "to select the param and store it we have to write it in script " , ok "done" , parameters: choice(name:"ENV",choices:['prod','dev'])
+                          env.ENV2 = input message: "to select the param and store it we have to write it in script ", ok "done", parameters: choice(name:"ENV",choices:['prod','dev'])
                           gv.deployApp()
                           echo "deploying to ${ENV} and ${ENV2}"
                         }
