@@ -35,6 +35,7 @@ pipeline {
                     }
         }
         stage('deploy') {
+        
                     input{
                         message "choose the envrironment to deploy to"
                         ok "Done"
@@ -44,8 +45,9 @@ pipeline {
                     }
                     steps {
                         script{
+                          env.ENV2 = input message: "to select the param and store it we have to write it in script " , ok "done" , parameters: choice(name:"ENV",choices:['prod','dev'])
                           gv.deployApp()
-                          echo "deploying to ${ENV}"
+                          echo "deploying to ${ENV} and ${ENV2}"
                         }
                   
                     }
